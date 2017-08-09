@@ -8,9 +8,19 @@
         <link rel="stylesheet" href="style.css">
         <title>Rolodex</title>
     </head>
-    <body>
-        <div ng-app="rolodex">
+    <body ng-app="rolodex">
+            <div class="title">
+                Imma Aquire U Rolodex
+            </div>
+            <div class="login" ng-controller="MainController">
+                <div class="logged-in-message" ng-show="loggedIn">
+                    Hello, {{username}}, what companies would you like to aquire today?<br>
+                    Logout
+                </div>
+                <div class="logged-out-message" ng-hide="loggedIn">
+                    Do you wanna aquire companies? Yeah? Well, login, Buckaroo!
+                </div>
+            </div>
             <ui-view></ui-view>
-        </div>
     </body>
 </html>
