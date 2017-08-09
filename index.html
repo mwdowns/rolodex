@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <script src="angular.js"></script>    
         <script src="angular-ui-router.js"></script>
-        <script rel="stylesheet" href="style.css"></script>
+        <script src="rolodex.js"></script>
+        <link rel="stylesheet" href="style.css">
         <title>Rolodex</title>
     </head>
     <body>
-        <p>hello</p>
+        <div ng-app="rolodex">
+            <ui-view></ui-view>
+        </div>
     </body>
 </html>
