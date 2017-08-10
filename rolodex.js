@@ -43,12 +43,12 @@ app.factory('rolodexService', function($rootScope, $state, $http){
                 companyName: "Blah.co",
                 employees: 50
             },
-            status: 'researching',
+            companyStatus: 'researching',
             keyContacts: [
                 {
-                    name: 'Barbara',
-                    phone: '555-555-5555',
-                    email: 'barbara@blah.com'
+                    contactName: 'Barbara',
+                    contactPhone: '555-555-5555',
+                    contactEmail: 'barbara@blah.com'
                 }
             ],
             financialPerf: 'best'
@@ -59,17 +59,17 @@ app.factory('rolodexService', function($rootScope, $state, $http){
                 companyName: "SuperLLC",
                 employees: 400
             },
-            status: 'pending-approval',
+            companyStatus: 'pending-approval',
             keyContacts: [
                 {
-                    name: 'Stan',
-                    phone: '444-444-4444',
-                    email: 'stan@super.com'
+                    contactName: 'Stan',
+                    contactPhone: '444-444-4444',
+                    contactEmail: 'stan@super.com'
                 },
                 {
-                    name: 'Sue',
-                    phone: '444-444-1111',
-                    email: 'sue@super.com'
+                    contactName: 'Sue',
+                    contactPhone: '444-444-1111',
+                    contactEmail: 'sue@super.com'
                 }
             ],
             financialPerf: 'sup-par'
@@ -80,12 +80,12 @@ app.factory('rolodexService', function($rootScope, $state, $http){
                 companyName: "OK.inc",
                 employees: 9000
             },
-            status: 'declined',
+            companyStatus: 'declined',
             keyContacts: [
                 {
-                    name: 'Oliver',
-                    phone: '222-222-2222',
-                    email: 'oliver@ok.com'
+                    contactName: 'Oliver',
+                    contactPhone: '222-222-2222',
+                    contactEmail: 'oliver@ok.com'
                 }
             ],
             financialPerf: 'OK'
@@ -165,12 +165,12 @@ app.controller('AddTargetController', function($scope, $rootScope, $state, $stat
                 companyName: $scope.companyName,
                 employees: $scope.numOfEmployees,
             },
-            status: $scope.companyStatus,
+            companyStatus: $scope.companyStatus,
             keyContacts: [
                 {
-                    name: $scope.contactName,
-                    phone: $scope.contactPhone,
-                    email: $scope.contactEmail,
+                    contactName: $scope.contactName,
+                    contactPhone: $scope.contactPhone,
+                    contactEmail: $scope.contactEmail,
                 }
             ],
             financialPerf: $scope.financialPerf

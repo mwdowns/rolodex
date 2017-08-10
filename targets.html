@@ -8,20 +8,20 @@
 </div>
 <div class="company-list" ng-repeat="company in companies">
     <div class="company-name">
-        <p>{{company.companyInfo.name}} - {{company.id}}</p>
+        <p>{{company.companyInfo.companyName}} - {{company.id}}</p>
         <button type="button" name="button" ng-click="edit(company.id)">Edit</button>
     </div>
     <div class="company-contacts">
         <ul>
             <li ng-repeat="contact in company.keyContacts">
-            {{contact.name}}<br>
-            {{contact.phone}}<br>
-            {{contact.email}}
+            {{contact.contactName}}<br>
+            {{contact.contactPhone}}<br>
+            {{contact.contactEmail}}
             </li>
         </ul>
     </div>
     <div class="company-status">
-        <p>{{company.status}}</p>
+        <p>{{company.companyStatus}}</p>
     </div>
     <div class="company-perf">
         <p>{{company.financialPerf}}</p>
