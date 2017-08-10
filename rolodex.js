@@ -107,7 +107,13 @@ app.factory('rolodexService', function($rootScope, $state, $http){
     
     // Deletes a target (can be done from the view all page or the edit page)
     $rootScope.deleteTarget = function(id) {
-        console.log('gonna delete you!');
+        console.log('gonna delete you! ', id);
+        for (i = 0; i < $rootScope.companies.length; i++) {
+            if ($rootScope.companies[i].id === parseInt(id)) {
+                $rootScope.companies.splice(i, 1);
+                $state.go('targets');
+            }
+        }
     };
     
     // service.addTarget = function(formData) {

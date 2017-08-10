@@ -9,7 +9,7 @@
 <div class="company-list" ng-repeat="company in companies">
     <div class="company-name">
         <p>{{company.companyInfo.companyName}} - {{company.id}}</p>
-        <button type="button" name="button" ng-click="editButton(company.id)">Edit</button>
+        <button type="button" name="editButton" ng-click="editButton(company.id)">Edit</button> | <button type="button" name="deleteButton" ng-click="deleteTarget(company.id)">Delete</button>
     </div>
     <div class="company-contacts">
         <ul>
