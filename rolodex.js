@@ -92,6 +92,14 @@ app.factory('rolodexService', function($rootScope, $state, $http){
         }
     ];
     
+    $rootScope.addNewTarget = function() {
+        $state.go('addtarget');
+    };
+    
+    $rootScope.deleteTarget = function(id) {
+        console.log('gonna delete you!');
+    };
+    
     // service.addTarget = function(formData) {
     //     var newTarget = {
     //         id: 4,
@@ -143,11 +151,6 @@ app.controller('RolodexController', function($scope, $rootScope, $state, $stateP
     $scope.newTargetMessage = 'click to add new target';
     $scope.viewTargetsMessage = 'click to see all targets';
     
-    $scope.addNewTarget = function() {
-        console.log('clicked to add new target');
-        $state.go('addtarget');
-    };
-    
     $scope.viewTargets = function() {
         console.log('clicked to view targets');
         $state.go('targets');
@@ -190,6 +193,7 @@ app.controller('TargetsController', function($scope, $rootScope, $state, $stateP
         console.log("this is the id: ", id);
         $state.go('edittarget', {target_id: id});
     };
+    
 });
 
 app.controller('EditTargetController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
