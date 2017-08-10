@@ -181,11 +181,18 @@ app.controller('TargetsController', function($scope, $rootScope, $state, $stateP
 //Controller for adding a new target
 app.controller('AddTargetController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     
+    // This little bit of code gets all the IDs, finds the highest one and then adds 1 to that to get the ID for the new entry.
+    var IDs = [];
+    for (i = 0; i < $rootScope.companies.length; i++) {
+        IDs.push($rootScope.companies[i].id);
+    }
+    var newID = Math.max(...IDs) + 1;
+    
     //This is the function that the form uses to make a new target
     $scope.addTarget = function() {
         //Creates a new target object with the info entered into the form
         var newTarget = {
-            id: 4,
+            id: newID,
             companyInfo: {
                 companyName: $scope.companyName,
                 employees: $scope.numOfEmployees,
