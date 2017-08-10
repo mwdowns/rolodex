@@ -41,7 +41,7 @@ app.factory('rolodexService', function($rootScope, $state, $http){
             id: 1,
             companyInfo: {
                 companyName: "Blah.co",
-                employees: 50
+                numOfEmployees: 50
             },
             companyStatus: 'researching',
             keyContacts: [
@@ -158,6 +158,16 @@ app.controller('RolodexController', function($scope, $rootScope, $state, $stateP
     
 });
 
+app.controller('TargetsController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
+    console.log('looking at all targets: ', $scope.companies);
+    
+    $scope.editButton = function(id) {
+        console.log("this is the id: ", id);
+        $state.go('edittarget', {target_id: id});
+    };
+    
+});
+
 app.controller('AddTargetController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     console.log('making a new target');
     
@@ -186,20 +196,30 @@ app.controller('AddTargetController', function($scope, $rootScope, $state, $stat
     
 });
 
-app.controller('TargetsController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
-    console.log('looking at all targets: ', $scope.companies);
-    
-    $scope.edit = function(id) {
-        console.log("this is the id: ", id);
-        $state.go('edittarget', {target_id: id});
-    };
-    
-});
-
 app.controller('EditTargetController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     
     $scope.targetID = $stateParams.target_id;
     console.log("i'm editing stuff! And this is the id: ", $scope.targetID);
+    
+    for (i = 0; i < $rootScope.companies.length; i++ ) {
+        if ($rootScope.companies[i].id === parseInt($scope.targetID)) {
+            $scope.target = $rootScope.companies[i];
+        }
+    }
+    console.log('this is the company info: ', $scope.target);
+    $scope.editTarget = function() {
+        for (i = 0; i < $rootScope.companies.length; i++ ) {
+            if ($rootScope.companies[i].id === parseInt($scope.targetID)) {
+                console.log('in if statement for updating');
+                $rootScope.companies[i].companyInfo.companyName = $scope.target.companyInfo.companyName;
+                $rootScope.companies[i].companyInfo.numOfEmployees = $scope.target.companyInfo.numOfEmployees;
+                $rootScope.companies[i].companyStatus = $scope.target.companyStatus;
+                $rootScope.companies[i].financialPerf = $scope.target.financialPerf;
+                $state.go('targets');
+            }
+        }
+        $state.go('targets');  
+    };
     
 });
 

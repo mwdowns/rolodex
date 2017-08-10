@@ -1,29 +1,29 @@
 yo!
 
-<form ng-submit="editTarget(targetID)">
+<form ng-submit="editTarget()">
     
     <div>
         <label for="companyName">Company Name:</label>
-        <input type="text" name="companyName" ng-model="companyName" value="">
+        <input type="text" name="companyName" ng-model="target.companyInfo.companyName" value="">
     </div>
     <div>
         <label for="numOfEmployees">Number of Employees:</label>
-        <input type="number" name="numOfEmployees" ng-model="numOfEmployees" value="1">
+        <input type="number" name="numOfEmployees" ng-model="target.companyInfo.numOfEmployees" value="1">
     </div>
     <div>
         <label for="companyStatus">Status:</label>
-        <input type="text" name="companyStatus" ng-model="companyStatus" value="">
+        <input type="text" name="companyStatus" ng-model="target.companyStatus" value="">
     </div>
     <div>
         <label for="financialPerf">Financial Performance:</label>
-        <input type="text" name="financialPerf" ng-model="financialPerf" value="">
+        <input type="text" name="financialPerf" ng-model="target.financialPerf" value="">
     </div>
     <div>
         <label for="Contacts">Company Contacts:</label><br>
-        <ul>
-            <li>Name: <input type="text" name="financialPerf" ng-model="contactName" value=""></li>
-            <li>Phone: <input type="text" name="financialPerf" ng-model="contactPhone" value=""></li>
-            <li>Email: <input type="email" name="financialPerf" ng-model="contactEmail" value=""></li>
+        <ul ng-repeat="contact in target.keyContacts">
+            <li>Name: <input type="text" name="financialPerf" ng-model="contact.contactName" value=""></li>
+            <li>Phone: <input type="text" name="financialPerf" ng-model="contact.contactPhone" value=""></li>
+            <li>Email: <input type="email" name="financialPerf" ng-model="contact.contactEmail" value=""></li>
         </ul>    
     </div>
     <button type="submit">Edit Target</button>
