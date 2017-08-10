@@ -19,13 +19,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
         name: 'edittarget',
         url: '/edit/{target_id}',
         templateUrl: 'edit.html',
-        controller: 'editTargetController'
+        controller: 'EditTargetController'
     })
     .state({
         name: 'addtarget',
         url: '/addtarget',
         templateUrl: 'addtarget.html',
-        controller: 'addTargetController'
+        controller: 'AddTargetController'
     });
     
     $urlRouterProvider.otherwise('/');
@@ -125,15 +125,27 @@ app.controller('RolodexController', function($scope, $rootScope, $state, $stateP
 
 app.controller('AddTargetController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     console.log('making a new target');
+    
+    $scope.addTarget = function() {
+        console.log('will add stuff here');
+    };
+    
 });
 
-app.controller ('TargetsController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
+app.controller('TargetsController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     console.log('looking at all targets: ', $scope.companies);
     
     $scope.edit = function(id) {
-        console.log(id);
-        // $state.go('edittarget', {target_id: id});
+        console.log("this is the id: ", id);
+        $state.go('edittarget', {target_id: id});
     };
+});
+
+app.controller('EditTargetController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
+    
+    $scope.targetID = $stateParams.target_id;
+    console.log("i'm editing stuff! And this is the id: ", $scope.targetID);
+    
 });
 
 
