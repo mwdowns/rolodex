@@ -1,3 +1,30 @@
-p {
-    color: red;
+.company-headers {
+    display: flex;
+    flex-direction: row;
+}
+
+.company-headers p {
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+    width: 24%;
+    color: green;
+    text-align: center;
+}
+
+.company-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.company-name, .company-contacts, .company-status, .company-perf {
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+    width: 24%;
+    text-align: center;
+}
+
+.company-contacts ul {
+    list-style: none;
 }

@@ -16,13 +16,83 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'TargetsController'
     })
     .state({
-        name: 'newtarget',
-        url: '/newtarget',
-        templateUrl: 'newtarget.html',
-        controller: 'NewTargetController'
+        name: 'edittarget',
+        url: '/edit/{target_id}',
+        templateUrl: 'edit.html',
+        controller: 'editTargetController'
+    })
+    .state({
+        name: 'addtarget',
+        url: '/addtarget',
+        templateUrl: 'addtarget.html',
+        controller: 'addTargetController'
     });
     
     $urlRouterProvider.otherwise('/');
+    
+});
+
+app.factory('rolodexService', function($rootScope, $state){
+    
+    var service = {};
+    
+    $rootScope.companies = [
+        {
+            id: 1,
+            companyInfo: {
+                name: "Blah.co",
+                employees: 50
+            },
+            status: 'researching',
+            keyContacts: [
+                {
+                    name: 'Barbara',
+                    phone: '555-555-5555',
+                    email: 'barbara@blah.com'
+                }
+            ],
+            financialPerf: 'best'
+        },
+        {
+            id: 2,
+            companyInfo: {
+                name: "SuperLLC",
+                employees: 400
+            },
+            status: 'pending-approval',
+            keyContacts: [
+                {
+                    name: 'Stan',
+                    phone: '444-444-4444',
+                    email: 'stan@super.com'
+                },
+                {
+                    name: 'Sue',
+                    phone: '444-444-1111',
+                    email: 'sue@super.com'
+                }
+            ],
+            financialPerf: 'sup-par'
+        },
+        {
+            id: 3,
+            companyInfo: {
+                name: "OK.inc",
+                employees: 9000
+            },
+            status: 'declined',
+            keyContacts: [
+                {
+                    name: 'Oliver',
+                    phone: '222-222-2222',
+                    email: 'oliver@ok.com'
+                }
+            ],
+            financialPerf: 'OK'
+        }
+    ];
+    
+    return service;
     
 });
 
@@ -34,14 +104,16 @@ app.controller('MainController', function($scope, $stateParams, $state, $rootSco
     
 });
 
-app.controller('RolodexController', function($scope, $stateParams, $state, $rootScope) {
+app.controller('RolodexController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
+    
+    console.log($scope.companies.length);
     
     $scope.newTargetMessage = 'click to add new target';
     $scope.viewTargetsMessage = 'click to see all targets';
     
     $scope.addNewTarget = function() {
         console.log('clicked to add new target');
-        $state.go('newtarget');
+        $state.go('addtarget');
     };
     
     $scope.viewTargets = function() {
@@ -51,12 +123,17 @@ app.controller('RolodexController', function($scope, $stateParams, $state, $root
     
 });
 
-app.controller('NewTargetController', function($scope, $stateParams, $state, $rootScope) {
+app.controller('AddTargetController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     console.log('making a new target');
 });
 
-app.controller ('TargetsController', function($scope, $stateParams, $state, $rootScope) {
-    console.log('looking at all targets');
+app.controller ('TargetsController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
+    console.log('looking at all targets: ', $scope.companies);
+    
+    $scope.edit = function(id) {
+        console.log(id);
+        // $state.go('edittarget', {target_id: id});
+    };
 });
 
 

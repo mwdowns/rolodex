@@ -1,1 +1,29 @@
-Gonna view all targets!
+<p>Gonna view all targets!</p>
+
+<div class="company-headers">
+    <p>Company Name</p>
+    <p>Company Contacts</p>
+    <p>Company Status</p>
+    <p>Company Financial Performance</p>
+</div>
+<div class="company-list" ng-repeat="company in companies">
+    <div class="company-name">
+        <p>{{company.companyInfo.name}} - {{company.id}}</p>
+        <button type="button" name="button">Edit</button>
+    </div>
+    <div class="company-contacts">
+        <ul>
+            <li ng-repeat="contact in company.keyContacts">
+            {{contact.name}}<br>
+            {{contact.phone}}<br>
+            {{contact.email}}
+            </li>
+        </ul>
+    </div>
+    <div class="company-status">
+        <p>{{company.status}}</p>
+    </div>
+    <div class="company-perf">
+        <p>{{company.financialPerf}}</p>
+    </div>
+</div>
