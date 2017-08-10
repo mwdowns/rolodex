@@ -32,7 +32,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     
 });
 
-app.factory('rolodexService', function($rootScope, $state){
+app.factory('rolodexService', function($rootScope, $state, $http){
     
     var service = {};
     
@@ -40,7 +40,7 @@ app.factory('rolodexService', function($rootScope, $state){
         {
             id: 1,
             companyInfo: {
-                name: "Blah.co",
+                companyName: "Blah.co",
                 employees: 50
             },
             status: 'researching',
@@ -56,7 +56,7 @@ app.factory('rolodexService', function($rootScope, $state){
         {
             id: 2,
             companyInfo: {
-                name: "SuperLLC",
+                companyName: "SuperLLC",
                 employees: 400
             },
             status: 'pending-approval',
@@ -77,7 +77,7 @@ app.factory('rolodexService', function($rootScope, $state){
         {
             id: 3,
             companyInfo: {
-                name: "OK.inc",
+                companyName: "OK.inc",
                 employees: 9000
             },
             status: 'declined',
@@ -91,6 +91,38 @@ app.factory('rolodexService', function($rootScope, $state){
             financialPerf: 'OK'
         }
     ];
+    
+    // service.addTarget = function(formData) {
+    //     var newTarget = {
+    //         id: 4,
+    //         companyInfo: {
+    //             companyName: formData.name,
+    //             employees: formData.numOfEmployees,
+    //         },
+    //         status: formData.companyStatus,
+    //         keyContacts: [
+    //             {
+    //                 name: formData.contactName,
+    //                 phone: formData.contactPhone,
+    //                 email: formData.contactEmail,
+    //             }
+    //         ],
+    //         financialPerf: formData.financialPerf
+    //     };
+    //     
+    //     return $http({
+    //         methhod: 'POST',
+    //         url: '/addtarget',
+    //         data: newTarget
+    //     })
+    //     .then(function(response) {
+    //         var data = response.data;
+    //         console.log('this is the response: ', data);
+    //     })
+    //     .catch(function(error) {
+    //         console.log('got an error: ', error);
+    //     });
+    // };
     
     return service;
     
@@ -127,7 +159,26 @@ app.controller('AddTargetController', function($scope, $rootScope, $state, $stat
     console.log('making a new target');
     
     $scope.addTarget = function() {
-        console.log('will add stuff here');
+        var newTarget = {
+            id: 4,
+            companyInfo: {
+                companyName: $scope.companyName,
+                employees: $scope.numOfEmployees,
+            },
+            status: $scope.companyStatus,
+            keyContacts: [
+                {
+                    name: $scope.contactName,
+                    phone: $scope.contactPhone,
+                    email: $scope.contactEmail,
+                }
+            ],
+            financialPerf: $scope.financialPerf
+        };
+        console.log('adding new target to rootScope, which looks like this now: ', $rootScope.companies);
+        $rootScope.companies.push(newTarget);
+        console.log('new rootScope? ', $rootScope.companies);
+        $state.go('targets');
     };
     
 });
