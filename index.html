@@ -9,18 +9,29 @@
         <title>Rolodex</title>
     </head>
     <body ng-app="rolodex">
-            <div class="title">
-                Imma Aquire U Rolodex
-            </div>
-            <div class="login" ng-controller="MainController">
-                <div class="logged-in-message" ng-show="loggedIn">
-                    Hello, {{username}}, what companies would you like to aquire today?<br>
-                    Logout
+        <div class="app-body">
+            <div class="header">
+                <div class="title">
+                    <p>Imma Aquire U Rolodex</p>
+                    <p class="main-page-button" ng-hide="home" ng-click="goHome()">Main Page</p>
                 </div>
-                <div class="logged-out-message" ng-hide="loggedIn">
-                    Do you wanna aquire companies? Yeah? Well, login, Buckaroo!
+                <div class="login" ng-controller="MainController">
+                    <div class="logged-in-message" ng-show="loggedIn">
+                        Hello, {{username}}, what companies would you like to aquire today?<br>
+                        Logout
+                    </div>
+                    <div class="logged-out-message" ng-hide="loggedIn">
+                        Do you wanna aquire companies? Yeah? Well, login, Buckaroo!
+                        SignIn | SignUp
+                    </div>
                 </div>
             </div>
-            <ui-view></ui-view>
+            <div class="view-box">
+                <ui-view></ui-view>
+            </div>
+            <div class="footer">
+                <p>made with love by me</p>
+            </div>
+        </div>
     </body>
 </html>

@@ -37,6 +37,8 @@ app.factory('rolodexService', function($rootScope, $state, $http){
     
     var service = {};
     
+    $rootScope.home = true;
+    
     $rootScope.companies = [
         {
             id: 1,
@@ -95,13 +97,22 @@ app.factory('rolodexService', function($rootScope, $state, $http){
     
     //These are a few functions that I want to be used regardless of what controller we're in, so I've stuck them on the rootScope.
     
+    $rootScope.goHome = function() {
+        
+        $rootScope.home = true;
+        $state.go('home');
+        
+    };
+    
     // Go to the view all targets page
     $rootScope.viewTargets = function() {
+        $rootScope.home = false;
         $state.go('targets');
     };
     
     // Go to the add target page
     $rootScope.addNewTarget = function() {
+        $rootScope.home = false;
         $state.go('addtarget');
     };
     
@@ -115,38 +126,6 @@ app.factory('rolodexService', function($rootScope, $state, $http){
             }
         }
     };
-    
-    // service.addTarget = function(formData) {
-    //     var newTarget = {
-    //         id: 4,
-    //         companyInfo: {
-    //             companyName: formData.name,
-    //             employees: formData.numOfEmployees,
-    //         },
-    //         status: formData.companyStatus,
-    //         keyContacts: [
-    //             {
-    //                 name: formData.contactName,
-    //                 phone: formData.contactPhone,
-    //                 email: formData.contactEmail,
-    //             }
-    //         ],
-    //         financialPerf: formData.financialPerf
-    //     };
-    //     
-    //     return $http({
-    //         methhod: 'POST',
-    //         url: '/addtarget',
-    //         data: newTarget
-    //     })
-    //     .then(function(response) {
-    //         var data = response.data;
-    //         console.log('this is the response: ', data);
-    //     })
-    //     .catch(function(error) {
-    //         console.log('got an error: ', error);
-    //     });
-    // };
     
     return service;
     
