@@ -1,32 +1,41 @@
-yo!
+<div class="edit-directions">
+    <p>Here's the info we have on this company. Change whatever you'd like then hit Save Changes</p>
+</div>
 
-<form ng-submit="editTarget()">
-    
-    <div>
-        <label for="companyName">Company Name:</label>
-        <input type="text" name="companyName" ng-model="target.companyInfo.companyName" value="">
-    </div>
-    <div>
-        <label for="numOfEmployees">Number of Employees:</label>
-        <input type="number" name="numOfEmployees" ng-model="target.companyInfo.numOfEmployees" value="1">
-    </div>
-    <div>
-        <label for="companyStatus">Status:</label>
-        <input type="text" name="companyStatus" ng-model="target.companyStatus" value="">
-    </div>
-    <div>
-        <label for="financialPerf">Financial Performance:</label>
-        <input type="text" name="financialPerf" ng-model="target.financialPerf" value="">
-    </div>
-    <div>
-        <label for="Contacts">Company Contacts:</label><br>
-        <ul ng-repeat="contact in target.keyContacts">
-            <li>Name: <input type="text" name="financialPerf" ng-model="contact.contactName" value=""></li>
-            <li>Phone: <input type="text" name="financialPerf" ng-model="contact.contactPhone" value=""></li>
-            <li>Email: <input type="email" name="financialPerf" ng-model="contact.contactEmail" value=""></li>
-        </ul>    
-    </div>
-    <button type="submit">Edit Target</button>
-</form>
+<div class="edit-form">
+    <form ng-submit="editTarget()">
+        
+        <div>
+            <label for="companyName">Company Name:</label>
+            <input type="text" name="companyName" ng-model="target.companyInfo.companyName" value="">
+        </div>
+        <div>
+            <label for="numOfEmployees">Number of Employees:</label>
+            <input type="number" name="numOfEmployees" ng-model="target.companyInfo.numOfEmployees" value="1">
+        </div>
+        <div>
+            <label for="companyStatus">Status:</label>
+            <input type="text" name="companyStatus" ng-model="target.companyStatus" value="">
+        </div>
+        <div>
+            <label for="financialPerf">Financial Performance:</label>
+            <input type="text" name="financialPerf" ng-model="target.financialPerf" value="">
+        </div>
+        <div>
+            <label for="Contacts">Company Contacts:</label><br>
+            <ul ng-repeat="contact in arrayOfContacts track by contact.contactID">
+                <input type="hidden" ng-model="contact.contactID">
+                <li>Name: <input type="text" ng-model="contact.contactName" value=""></li>
+                <li>Phone: <input type="text" ng-model="contact.contactPhone" value=""></li>
+                <li>Email: <input type="email" ng-model="contact.contactEmail" value=""></li>
+            </ul>
+            <button class="add-another-contact" type="button" ng-click="addAnotherContact()">Add Another Contact</button> 
+        </div><br>
+        <button type="submit">Save Changes</button>
+    </form>
+</div>
 
-<button type="button" name="deleteButton" ng-click="deleteTarget(targetID)">Delete this target</button>
+<div class="delete-button">
+    <p>Would you like to delete this entry?</p>
+    <button type="button" name="deleteButton" ng-click="deleteTarget(targetID)">Delete this target</button>
+</div>

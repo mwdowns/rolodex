@@ -9,29 +9,38 @@
         <title>Rolodex</title>
     </head>
     <body ng-app="rolodex">
+        
         <div class="app-body">
-            <div class="header">
-                <div class="title">
-                    <p>Imma Aquire U Rolodex</p>
-                    <p class="main-page-button" ng-hide="home" ng-click="goHome()">Main Page</p>
-                </div>
-                <div class="login" ng-controller="MainController">
-                    <div class="logged-in-message" ng-show="loggedIn">
-                        Hello, {{username}}, what companies would you like to aquire today?<br>
-                        Logout
+            
+            <div class="container">
+                <div class="header">
+                    <div class="title">
+                        <p>Imma Aquire U Rolodex</p>
+                        <p class="main-page-button" ng-hide="home" ng-click="goHome()">Main Page</p>
                     </div>
-                    <div class="logged-out-message" ng-hide="loggedIn">
-                        Do you wanna aquire companies? Yeah? Well, login, Buckaroo!
-                        SignIn | SignUp
+                    <div class="login" ng-controller="MainController">
+                        <div class="logged-in-message" ng-show="loggedIn">
+                            Hello, {{username}}, what companies would you like to aquire today?<br>
+                            <span ng-click="logOut()">Logout</span>
+                        </div>
+                        <div class="logged-out-message" ng-hide="loggedIn">
+                            Do you wanna aquire companies? Yeah? Well, login, Buckaroo!<br>
+                            <span ng-click="logIn()">SignIn | SignUp</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="view-box">
+            
+            <div class="container">
                 <ui-view></ui-view>
             </div>
-            <div class="footer">
-                <p>made with love by me</p>
+            
+            <div class="container">
+                <div class="footer">
+                    <p>made with love by me</p>
+                </div>
             </div>
+            
         </div>
     </body>
 </html>
