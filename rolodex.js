@@ -158,8 +158,6 @@ app.controller('MainController', function($scope, $stateParams, $state, $rootSco
 //Controller for the main landing page. Just a couple messages.
 app.controller('RolodexController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     
-    console.log($scope.companies.length);
-    
     $scope.newTargetMessage = "I feel like acquiring today!";
     $scope.viewTargetsMessage = "I want to see who I want to acquire";
     
@@ -169,6 +167,7 @@ app.controller('RolodexController', function($scope, $rootScope, $state, $stateP
 app.controller('TargetsController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     console.log('looking at all targets: ', $scope.companies);
     
+    // Makes sure that on a hard refresh of this state, the home button shows up
     $rootScope.home = false;
     
     // Function for when the Edit button is clicked under a particular target
@@ -183,6 +182,7 @@ app.controller('TargetsController', function($scope, $rootScope, $state, $stateP
 //Controller for adding a new target
 app.controller('AddTargetController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     
+    // Makes sure that on a hard refresh of this state, the home button shows up
     $rootScope.home = false;
     // This little bit of code gets all the IDs, finds the highest one and then adds 1 to that to get the ID for the new entry.
     var IDs = [];
@@ -253,6 +253,7 @@ app.controller('AddTargetController', function($scope, $rootScope, $state, $stat
 //Controller for the Edit Target page, for editing a single target.
 app.controller('EditTargetController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     
+    // Makes sure that on a hard refresh of this state, the home button shows up
     $rootScope.home = false;
     
     // Get the company ID from the $statePararms
@@ -268,9 +269,8 @@ app.controller('EditTargetController', function($scope, $rootScope, $state, $sta
             }
         }
     }
-    console.log('this is the company info: ', $scope.target);
-    console.log('these are the contacts: ', $scope.arrayOfContacts);
     
+    //Function for adding a new contact to the edit page
     $scope.addAnotherContact = function() {
         
         var newIndex = $scope.arrayOfContacts.length + 1;
@@ -281,7 +281,7 @@ app.controller('EditTargetController', function($scope, $rootScope, $state, $sta
             contactEmail: ''
         };
         $scope.arrayOfContacts.push(newContact);
-        console.log('this is the array of contacts: ', $scope.arrayOfContacts);
+        
     };
     //This is the the edit function for the edit form submit button. It basically does the forloop again and updates the rootScope array with the info from the edit page, and by updates, I mean it just replaces everything whether it was changed or not.
     $scope.editTarget = function() {
@@ -292,6 +292,8 @@ app.controller('EditTargetController', function($scope, $rootScope, $state, $sta
                 $rootScope.companies[i].companyInfo.numOfEmployees = $scope.target.companyInfo.numOfEmployees;
                 $rootScope.companies[i].companyStatus = $scope.target.companyStatus;
                 $rootScope.companies[i].financialPerf = $scope.target.financialPerf;
+                // This will collect all the contacts to be updated and update them similar
+                // to the way we added a new list of contacts in the add controller
                 var contacts = [];
                 for (j = 0; j < $scope.arrayOfContacts.length; j++) {
                     var contact = {
