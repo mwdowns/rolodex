@@ -5,37 +5,66 @@
 <div class="edit-form">
     <form ng-submit="editTarget()">
         
-        <div>
-            <label for="companyName">Company Name:</label>
-            <input type="text" name="companyName" ng-model="target.companyInfo.companyName" value="">
+        <div class="forms-container">
+            <div class="company-name-div label">
+                <label for="companyName">Company Name:</label>
+            </div>
+            <div class="company-name-div input">
+                <input type="text" name="companyName" ng-model="target.companyInfo.companyName" placeholder="Company Name">
+            </div>
         </div>
-        <div>
-            <label for="numOfEmployees">Number of Employees:</label>
-            <input type="number" name="numOfEmployees" ng-model="target.companyInfo.numOfEmployees" value="1">
+        
+        <div class="forms-container">
+            <div class="employees-div label">
+                <label for="numOfEmployees">Number of Employees:</label>
+            </div>
+            <div class="employees-div input">
+                <input type="number" name="numOfEmployees" ng-model="target.companyInfo.numOfEmployees" placeholder="1">
+            </div>
         </div>
-        <div>
-            <label for="companyStatus">Status:</label>
-            <input type="text" name="companyStatus" ng-model="target.companyStatus" value="">
+        
+        <div class="forms-container">
+            <div class="company-status-div label">
+                <label for="companyStatus">Status:</label>
+            </div>
+            <div class="company-status-div input">
+                <select name="statusList" ng-model="target.companyStatus">
+                    <option ng-repeat="option in statusList" value="{{option}}">{{option}}</option>
+                </select>
+            </div>
         </div>
-        <div>
-            <label for="financialPerf">Financial Performance:</label>
-            <input type="text" name="financialPerf" ng-model="target.financialPerf" value="">
+        
+        <div class="forms-container">
+            <div class="financial-perf-div label">
+                <label for="financialPerf">Financial Performance:</label>
+            </div>
+            <div class="financial-perf-div input">
+                <select name="financialPerfList" ng-model="target.financialPerf">
+                    <option ng-repeat="option in finacialPerfList" value="{{option}}">{{option}}</option>
+                </select>
+            </div>
         </div>
-        <div>
-            <label for="Contacts">Company Contacts:</label><br>
-            <ul ng-repeat="contact in arrayOfContacts track by contact.contactID">
-                <input type="hidden" ng-model="contact.contactID">
-                <li>Name: <input type="text" ng-model="contact.contactName" value=""></li>
-                <li>Phone: <input type="text" ng-model="contact.contactPhone" value=""></li>
-                <li>Email: <input type="email" ng-model="contact.contactEmail" value=""></li>
-            </ul>
-            <button class="add-another-contact" type="button" ng-click="addAnotherContact()">Add Another Contact</button> 
-        </div><br>
-        <button type="submit">Save Changes</button>
+        
+        <div class="forms-container">
+            <div class="contacts-div label">
+                <label for="Contacts">Company Contacts:</label>
+            </div>
+            <div class="contacts-div input">
+                <ul ng-repeat="contact in arrayOfContacts track by contact.contactID">
+                    <input type="hidden" ng-model="contact.contactID">
+                    <li><input type="text" ng-model="contact.contactName" placeholder="Contact Name"></li>
+                    <li><input type="text" ng-model="contact.contactPhone" placeholder="Contact Phone"></li>
+                    <li style="margin-bottom:5px"><input type="email" ng-model="contact.contactEmail" placeholder="Contact Email"></li>
+                </ul>
+                <button class="add-another-contact" type="button" ng-click="addAnotherContact()">Add Another Contact</button> 
+            </div>
+        </div>
+        
+        <button class="create-update-button" type="submit">Save Changes</button>
     </form>
 </div>
 
 <div class="delete-button">
-    <p>Would you like to delete this entry?</p>
-    <button type="button" name="deleteButton" ng-click="deleteTarget(targetID)">Delete this target</button>
+    <p class="delete-message">Would you like to delete this entry?</p>
+    <button type="button" name="deleteButton" ng-click="deleteTarget(targetID)">Yes. Yes, I would.</button>
 </div>

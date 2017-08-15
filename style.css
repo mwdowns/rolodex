@@ -1,8 +1,13 @@
 body {
-    margin: 0;
+    margin: 0 5px;
     height: 100%;
     background-color: #1E6460;
     color: white;
+    font-family: Rajdhani, sans-serif;
+}
+
+html {
+    height: 100%;
 }
 
 .app-body {
@@ -18,42 +23,85 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin: 0;
 }
 
 /* Start header styling*/
 .header {
     width: 100%;
-    /*height: 50px;*/
-    /*position: fixed;
-    top: 0px;
-    left: 0px; */
-    border-style: solid;
-    border-color: #1d2162;
-    border-width: 5px;
+    font-family: Montserrat, sans-serif;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
 .title {
-    border-style: solid;
-    border-color: yellow;
-    border-width: 5px;
     width: 50%;
-    height: 100%
+    height: 100%;
+    margin: 0 5px;
 }
 
-.title p {
+.title p.main-title {
     margin: 0;
+    font-size: 2em;
+}
+
+.title p.main-page-button {
+    margin: 0;
+    background-color: #621d21;
+    width: 20%;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .login {
-    border-style: solid;
-    border-color: red;
-    border-width: 5px;
     display: flex;
     flex-direction: column;
+    margin: 0 5px;
 }
+
+.logged-in-text {
+    margin: 5px 5px 0 5px;
+}
+
+.user-name {
+    color: #1d2162;
+}
+
+p.logout-button {
+    margin: 0;
+    background-color: #621d21;
+    width: 20%;
+    font-size: .9em;
+    border-radius: 10px;
+    text-align: center;
+    float: right;
+}
+
+.logged-out-message p {
+    margin: 0;
+}
+
+.sign-in-buttons {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.sign-in-buttons p {
+    margin: 0 5px;
+}
+
+p.sign-in, p.sign-up {
+    margin: 0;
+    background-color: #621d21;
+    width: 20%;
+    font-size: .9em;
+    border-radius: 10px;
+    text-align: center;
+}
+
 /* End header styling */
 
 /* Start home ui-view */
@@ -65,11 +113,9 @@ body {
 }
 
 .add-new, .see-all {
-    border-style: solid;
-    border-color: black;
-    border-width: 5px;
     width: 100%;
     text-align: center;
+    font-size: 3em;
 }
 /* End home ui-view */
 
@@ -80,27 +126,23 @@ body {
 }
 
 .company-headers p {
-    border-style: solid;
-    border-color: #621d21;
-    /*border-color: #625f1d;*/
-    border-width: 5px;
-    width: 24%;
+    background-color: #621d21;
+    width: 25%;
     text-align: center;
+    margin: 0;
 }
 
 .company-list {
     display: flex;
     flex-direction: row;
+    background-color: #625f1d;
 }
 
 .company-name, .company-contacts, .company-status, .company-perf {
-    border-style: solid;
-    border-color: #1e6460;
-    border-width: 5px;
-    background-color: #625f1d;
-    /*background-color: #621d21;*/
-    width: 24%;
+    background-color: #1d2162;
+    width: 25%;
     text-align: center;
+    margin: 5px 5px;
 }
 
 .company-contacts ul {
@@ -108,16 +150,77 @@ body {
 }
 /* End targets ui-view */
 
+/* Start addtarget/edit ui-view*/
+.add-directions, .edit-directions {
+    background-color: #1d2162;
+    text-align: center;
+}
+
+.add-form, .edit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.forms-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.company-name-div, .employees-div, .company-status-div, .financial-perf-div, .contacts-div {
+    width: 49%;
+    margin-top: 5px;
+}
+
+.label {
+    text-align: right;
+}
+
+.input {
+    text-align: left;
+}
+
+.contacts-div ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.create-update-button {
+    margin-top: 10px;
+}
+
+.delete-button {
+    text-align: right;
+}
+
+.delete-message {
+    width: 100%;
+    background-color: #621d21;
+    text-align: right;
+}
+
+/* End addtarget/edit ui-view*/
+
 /* Start footer styling */
 .footer {
+    background-color: white;
+    color: #1E6460;
     width: 100%;
     height: 100%;
-    /*position: fixed;
-    bottom: 0px;
-    left: 0px; */
 }
 
 .footer p {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    font-size: .8em;
     text-align: center;
+}
+
+.fa-heart {
+    color: pink;
 }
 /* End footer styling */

@@ -64,7 +64,7 @@ app.factory('rolodexService', function($rootScope, $state, $http){
             id: 2,
             companyInfo: {
                 companyName: "SuperLLC",
-                employees: 400
+                numOfEmployees: 400
             },
             companyStatus: 'Pending-Approval',
             keyContacts: [
@@ -87,7 +87,7 @@ app.factory('rolodexService', function($rootScope, $state, $http){
             id: 3,
             companyInfo: {
                 companyName: "OK.inc",
-                employees: 9000
+                numOfEmployees: 9000
             },
             companyStatus: 'Declined',
             keyContacts: [
@@ -159,7 +159,15 @@ app.controller('MainController', function($scope, $stateParams, $state, $rootSco
 app.controller('RolodexController', function($scope, $rootScope, $state, $stateParams, rolodexService) {
     
     $scope.newTargetMessage = "I feel like acquiring today!";
-    $scope.viewTargetsMessage = "I want to see who I want to acquire";
+    var targetMessages = ["I want to see my list of prescious aquisitions!", "I'm gonna so acquire these companies!", "You want hostile acquisitions? That's how you get hostile aquisitions.", "Eeeny. Meeny. Miney. Acquire!", "Number One. Make the acquisition so!", "Use your acquisitions, Luke."];
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    var random = getRandomInt(0, targetMessages.length);
+    console.log(random);
+    $scope.viewTargetsMessage = targetMessages[random];
     
 });
 
@@ -314,5 +322,3 @@ app.controller('EditTargetController', function($scope, $rootScope, $state, $sta
     };
     
 });
-
-
