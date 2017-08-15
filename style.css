@@ -127,7 +127,7 @@ p.sign-in, p.sign-up {
 
 .company-headers p {
     background-color: #621d21;
-    width: 25%;
+    width: 20%;
     text-align: center;
     margin: 0;
 }
@@ -135,18 +135,36 @@ p.sign-in, p.sign-up {
 .company-list {
     display: flex;
     flex-direction: row;
-    background-color: #625f1d;
+    /*background-color: #625f1d;*/
+    background-color: #918f60;
 }
 
-.company-name, .company-contacts, .company-status, .company-perf {
-    background-color: #1d2162;
-    width: 25%;
+.company-name, .company-contacts, .company-status, .company-perf, .company-comments {
+    /*background-color: #918f60;*/
+    background-color: #625f1d;
+    width: 20%;
     text-align: center;
     margin: 5px 5px;
 }
 
+.company-info-name {
+    font-size: 1.3em;
+}
+
+p.company-info-name {
+    margin-bottom: 0;
+}
+
 .company-contacts ul {
     list-style: none;
+    padding: 0;
+}
+
+.add-new-target-button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 /* End targets ui-view */
 
@@ -170,7 +188,7 @@ p.sign-in, p.sign-up {
     width: 100%;
 }
 
-.company-name-div, .employees-div, .company-status-div, .financial-perf-div, .contacts-div {
+.company-name-div, .employees-div, .company-status-div, .financial-perf-div, .contacts-div, .comments-div {
     width: 49%;
     margin-top: 5px;
 }

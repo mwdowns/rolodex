@@ -49,16 +49,17 @@ app.factory('rolodexService', function($rootScope, $state, $http){
                 companyName: "Blah.co",
                 numOfEmployees: 50
             },
-            companyStatus: 'Researching',
+            companyStatus: "Researching",
             keyContacts: [
                 {
                     contactID: 1,
-                    contactName: 'Barbara',
-                    contactPhone: '555-555-5555',
-                    contactEmail: 'barbara@blah.com'
+                    contactName: "Barbara",
+                    contactPhone: "555-555-5555",
+                    contactEmail: "barbara@blah.com"
                 }
             ],
-            financialPerf: 'Best'
+            financialPerf: "Best",
+            companyComments: "This company is kinda Blah. I'm not really feeling it."
         },
         {
             id: 2,
@@ -66,22 +67,23 @@ app.factory('rolodexService', function($rootScope, $state, $http){
                 companyName: "SuperLLC",
                 numOfEmployees: 400
             },
-            companyStatus: 'Pending-Approval',
+            companyStatus: "Pending-Approval",
             keyContacts: [
                 {
                     contactID: 1,
-                    contactName: 'Stan',
-                    contactPhone: '444-444-4444',
-                    contactEmail: 'stan@super.com'
+                    contactName: "Stan",
+                    contactPhone: "444-444-4444",
+                    contactEmail: "stan@super.com"
                 },
                 {
                     contactID: 2,
-                    contactName: 'Sue',
-                    contactPhone: '444-444-1111',
-                    contactEmail: 'sue@super.com'
+                    contactName: "Sue",
+                    contactPhone: "444-444-1111",
+                    contactEmail: "sue@super.com"
                 }
             ],
-            financialPerf: 'Sub-Par'
+            financialPerf: "Sub-Par",
+            companyComments: "This company is Super. But their perf...not Super."
         },
         {
             id: 3,
@@ -89,16 +91,17 @@ app.factory('rolodexService', function($rootScope, $state, $http){
                 companyName: "OK.inc",
                 numOfEmployees: 9000
             },
-            companyStatus: 'Declined',
+            companyStatus: "Declined",
             keyContacts: [
                 {
                     contactID: 1,
-                    contactName: 'Oliver',
-                    contactPhone: '222-222-2222',
-                    contactEmail: 'oliver@ok.com'
+                    contactName: "Oliver",
+                    contactPhone: "222-222-2222",
+                    contactEmail: "oliver@ok.com"
                 }
             ],
-            financialPerf: 'OK'
+            financialPerf: "OK",
+            companyComments: "This company was OK, but they did not like my jokes."
         }
     ];
     
@@ -246,7 +249,8 @@ app.controller('AddTargetController', function($scope, $rootScope, $state, $stat
             },
             companyStatus: $scope.statusList,
             keyContacts: contacts,
-            financialPerf: $scope.financialPerfList
+            financialPerf: $scope.financialPerfList,
+            companyComments: $scope.companyComments,
         };
         console.log('adding new target to rootScope, which looks like this now: ', $rootScope.companies);
         // Pushes this new object into the $rootScope.copanies array

@@ -2,14 +2,16 @@
 
 <div class="company-headers">
     <p>Company Name</p>
-    <p>Company Contacts</p>
-    <p>Company Status</p>
-    <p>Company Financial Performance</p>
+    <p>Key Contacts</p>
+    <p>Acquisition Status</p>
+    <p>Financial Performance</p>
+    <p>Comments</p>
 </div>
 <div class="company-list" ng-repeat="company in companies">
     <div class="company-name">
-        <p>{{company.companyInfo.companyName}} - {{company.id}}</p>
-        <button type="button" name="editButton" ng-click="editButton(company.id)">Edit</button> | <button type="button" name="deleteButton" ng-click="deleteTarget(company.id)">Delete</button>
+        <p class="company-info-name"><b>{{company.companyInfo.companyName}}</b></p>
+        <p>Employees: {{company.companyInfo.numOfEmployees}} poor souls</p>
+        <p><button type="button" name="editButton" ng-click="editButton(company.id)">Edit</button> | <button type="button" name="deleteButton" ng-click="deleteTarget(company.id)">Delete</button></p>
     </div>
     <div class="company-contacts">
         <ul>
@@ -26,6 +28,10 @@
     <div class="company-perf">
         <p>{{company.financialPerf}}</p>
     </div>
+    <div class="company-comments">
+        <p>{{company.companyComments}}</p>
+    </div>
 </div><br>
-
-<button type="button" name="button" ng-click="addNewTarget()">Add New Target</button>
+<div class="add-new-target-button">
+    <button type="button" name="button" ng-click="addNewTarget()">Add New Target</button>
+</div>
