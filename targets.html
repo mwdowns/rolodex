@@ -1,37 +1,39 @@
-<p>Gonna view all targets!</p>
+<div class="targets-page-div">
+    <p>Gonna view all targets!</p>
 
-<div class="company-headers">
-    <p>Company Name</p>
-    <p>Key Contacts</p>
-    <p>Acquisition Status</p>
-    <p>Financial Performance</p>
-    <p>Comments</p>
-</div>
-<div class="company-list" ng-repeat="company in companies">
-    <div class="company-name">
-        <p class="company-info-name"><b>{{company.companyInfo.companyName}}</b></p>
-        <p>Employees: {{company.companyInfo.numOfEmployees}} poor souls</p>
-        <p><button type="button" name="editButton" ng-click="editButton(company.id)">Edit</button> | <button type="button" name="deleteButton" ng-click="deleteTarget(company.id)">Delete</button></p>
+    <div class="company-headers">
+        <p>Company Name</p>
+        <p>Key Contacts</p>
+        <p>Acquisition Status</p>
+        <p>Financial Performance</p>
+        <p>Comments</p>
     </div>
-    <div class="company-contacts">
-        <ul>
-            <li ng-repeat="contact in company.keyContacts">
-            {{contact.contactName}}<br>
-            {{contact.contactPhone}}<br>
-            {{contact.contactEmail}}
-            </li>
-        </ul>
+    <div class="company-list" ng-repeat="company in companies">
+        <div class="company-name">
+            <p class="company-info-name"><b>{{company.companyInfo.companyName}}</b></p>
+            <p>Employees: {{company.companyInfo.numOfEmployees}} poor souls</p>
+            <p><button type="button" name="editButton" ng-click="editButton(company.id)">Edit</button> | <button type="button" name="deleteButton" ng-click="deleteTarget(company.id)">Delete</button></p>
+        </div>
+        <div class="company-contacts">
+            <ul>
+                <li ng-repeat="contact in company.keyContacts">
+                {{contact.contactName}}<br>
+                {{contact.contactPhone}}<br>
+                {{contact.contactEmail}}
+                </li>
+            </ul>
+        </div>
+        <div class="company-status">
+            <p>{{company.companyStatus}}</p>
+        </div>
+        <div class="company-perf">
+            <p>{{company.financialPerf}}</p>
+        </div>
+        <div class="company-comments">
+            <p>{{company.companyComments}}</p>
+        </div>
+    </div><br>
+    <div class="add-new-target-button">
+        <button type="button" name="button" ng-click="addNewTarget()">Add New Target</button>
     </div>
-    <div class="company-status">
-        <p>{{company.companyStatus}}</p>
-    </div>
-    <div class="company-perf">
-        <p>{{company.financialPerf}}</p>
-    </div>
-    <div class="company-comments">
-        <p>{{company.companyComments}}</p>
-    </div>
-</div><br>
-<div class="add-new-target-button">
-    <button type="button" name="button" ng-click="addNewTarget()">Add New Target</button>
 </div>

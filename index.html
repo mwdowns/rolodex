@@ -10,7 +10,7 @@
         <script src="https://use.fontawesome.com/08ad4eaf61.js"></script>
         <title>Rolodex</title>
     </head>
-    <body ng-app="rolodex">
+    <body ng-app="rolodex" ng-model="moreThanThree" ng-class="{more: moreThanThree}">
         
         <div class="app-body">
             
@@ -22,7 +22,7 @@
                     </div>
                     <div class="login" ng-controller="MainController">
                         <div class="logged-in-message" ng-show="loggedIn">
-                            <p class="logged-in-text">Hello, <span class="user-name">{{username}}</span>, what companies would you like to aquire today?<p>
+                            <p class="logged-in-text">Hello, <span class="user-name">{{username}}</span>, what companies would you like to aquire today?</p>
                             <p class="logout-button" ng-click="logOut()">Logout</p>
                         </div>
                         <div class="logged-out-message" ng-hide="loggedIn">

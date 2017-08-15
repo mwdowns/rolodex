@@ -109,6 +109,7 @@ app.factory('rolodexService', function($rootScope, $state, $http){
     
     $rootScope.goHome = function() {
         
+        $rootScope.moreThanThree = false;
         $rootScope.home = true;
         $state.go('home');
         
@@ -122,6 +123,7 @@ app.factory('rolodexService', function($rootScope, $state, $http){
     
     // Go to the add target page
     $rootScope.addNewTarget = function() {
+        $rootScope.moreThanThree = false;
         $rootScope.home = false;
         $state.go('addtarget');
     };
@@ -180,6 +182,14 @@ app.controller('TargetsController', function($scope, $rootScope, $state, $stateP
     
     // Makes sure that on a hard refresh of this state, the home button shows up
     $rootScope.home = false;
+    
+    if ($rootScope.companies.length > 3) {
+        console.log('more than 3');
+        $rootScope.moreThanThree = true;
+    } else {
+        console.log('three or less');
+        $rootScope.moreThanThree = false;
+    }
     
     // Function for when the Edit button is clicked under a particular target
     $scope.editButton = function(id) {
@@ -241,23 +251,27 @@ app.controller('AddTargetController', function($scope, $rootScope, $state, $stat
         }
         
         //Creates a new target object with the info entered into the form
-        var newTarget = {
-            id: newID,
-            companyInfo: {
-                companyName: $scope.companyName,
-                employees: $scope.numOfEmployees,
-            },
-            companyStatus: $scope.statusList,
-            keyContacts: contacts,
-            financialPerf: $scope.financialPerfList,
-            companyComments: $scope.companyComments,
-        };
-        console.log('adding new target to rootScope, which looks like this now: ', $rootScope.companies);
-        // Pushes this new object into the $rootScope.copanies array
-        $rootScope.companies.push(newTarget);
-        console.log('new rootScope? ', $rootScope.companies);
-        // Goes to the view all targets page where you will see the new target
-        $state.go('targets');
+        if ($scope.companyName === '') {
+            $state.go('addtarget');
+        } else {
+            var newTarget = {
+                id: newID,
+                companyInfo: {
+                    companyName: $scope.companyName,
+                    numOfEmployees: $scope.numOfEmployees,
+                },
+                companyStatus: $scope.statusList,
+                keyContacts: contacts,
+                financialPerf: $scope.financialPerfList,
+                companyComments: $scope.companyComments,
+            };
+            console.log('adding new target to rootScope, which looks like this now: ', $rootScope.companies);
+            // Pushes this new object into the $rootScope.copanies array
+            $rootScope.companies.push(newTarget);
+            console.log('new rootScope? ', $rootScope.companies);
+            // Goes to the view all targets page where you will see the new target
+            $state.go('targets');
+        }
     };
     
 });
@@ -304,6 +318,7 @@ app.controller('EditTargetController', function($scope, $rootScope, $state, $sta
                 $rootScope.companies[i].companyInfo.numOfEmployees = $scope.target.companyInfo.numOfEmployees;
                 $rootScope.companies[i].companyStatus = $scope.target.companyStatus;
                 $rootScope.companies[i].financialPerf = $scope.target.financialPerf;
+                $rootScope.companies[i].companyComments = $scope.target.companyComments;
                 // This will collect all the contacts to be updated and update them similar
                 // to the way we added a new list of contacts in the add controller
                 var contacts = [];

@@ -6,9 +6,16 @@ body {
     font-family: Rajdhani, sans-serif;
 }
 
-html {
-    height: 100%;
+body.more {
+    margin: 0 5px;
+    background-color: #1E6460;
+    color: white;
+    font-family: Rajdhani, sans-serif;
 }
+
+/*html {
+    height: 100%;
+}*/
 
 .app-body {
     height: 100%;
